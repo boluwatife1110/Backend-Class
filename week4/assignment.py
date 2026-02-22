@@ -48,7 +48,10 @@ def validate_email(email):
 print(validate_email("michael@gmail.com")) 
 print(validate_email("michaelgmail.com")) 
 
-
+# 5. Given a list of dictionaries called users,
+#    write a function get_user_by_id(users, id)
+#    that returns the user with the matching id.
+# Answer no 5 here.
 def get_user_by_id(users, id):
     for user in users:
         if user["id"] == id:
@@ -64,20 +67,41 @@ users = [
 print(get_user_by_id(users, 2))
 
 
-
-
-
 # 6. Write a function called calculate_order_total(order)
 #    order is a list like:
 #    [{"item": "rice", "price": 2000}, {"item": "beans", "price": 3000}]
 #    Return the total cost.
 # Answer no 6 here.
+def calculate_order_total(order):
+    total = 0
+    for item in order:
+        total += item["price"]
+    return total
+order = [
+        {"item": "rice", "price": 2000},
+        {"item": "beans", "price": 3000}
+    ]
+
+print(calculate_order_total(order))
 
 
 # 7. Write a function called add_product(products, name, price)
 #    It should add a new dictionary into the products list:
 #    {"name": name, "price": price}
 # Answer no 7 here.
+def add_product(products, name, price):
+    products.append({"name": name, "price": price})
+products = [
+    {"name": "soap", "price": 500},
+    {"name": "sponge", "price": 300},
+    {"name": "shampoo", "price": 700}
+]
+
+add_product(products, "skin care", 1200)
+add_product(products, "oil", 800)
+
+print(products)
+    
 
 
 # 8. Write a function called check_permission(role)
@@ -85,12 +109,31 @@ print(get_user_by_id(users, 2))
 #    - If role is "user" return "Limited Access"
 #    - Else return "No Access"
 # Answer no 8 here.
+def check_permission(role):
+    if role == "admin":
+        return "Full Access"
+    elif role == "user":
+        return "Limited Access"
+    else:
+        return "No Access"
 
+print(check_permission("admin"))
+print(check_permission("user"))
+print(check_permission("guest"))
 
 # 9. Write a function called update_profile(user_dict, **changes)
 #    It should update the dictionary with the new values
 #    and return the updated dictionary.
 # Answer no 9 here.
+def update_profile(user_dict, **changes):
+    user_dict.update(changes)
+    return user_dict
+user = {"name": "Boluwatife", "age": 25, "city": "Abuja"}
+
+updated_user = update_profile(user, age=20, city="Lagos")
+
+print(updated_user)
+    
 
 
 # 10. Given a list of users with active status,
